@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Retiro</title>
+</head>
+<body>
+<h1>Registrar Retiro</h1>
+
+<form th:action="@{/retiros/procesar}" th:object="${retiroForm}" method="post">
+    <div>
+        <label>ID Cliente:</label>
+        <input type="number" th:field="*{clienteId}">
+        <div th:if="${#fields.hasErrors('clienteId')}" th:errors="*{clienteId}"></div>
+    </div>
+
+    <br>
+
+    <div>
+        <label>Monto:</label>
+        <input type="number" step="0.01" th:field="*{monto}">
+        <div th:if="${#fields.hasErrors('monto')}" th:errors="*{monto}"></div>
+    </div>
+
+    <br>
+
+    <button type="submit">Procesar retiro</button>
+</form>
+</body>
+</html>
